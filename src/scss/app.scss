@@ -1,0 +1,10 @@
+$fa-font-path: "~font-awesome/fonts";
+@import '~font-awesome/scss/font-awesome';
+@import '~bootstrap/scss/bootstrap';
+
+/* Custom Styles */
+.hero {
+  background: url("https://source.unsplash.com/wgq4eit198Q/700x400");
+  background-size: cover;
+  background-repeat: no-repeat;
+}

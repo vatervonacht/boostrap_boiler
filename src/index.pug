@@ -1,0 +1,41 @@
+doctype html  
+html(lang='en')  
+  head
+    // TODO - Meta and SEO stuff
+    title Make This A Configurable Title
+  body
+    header
+      .nav.navbar.navbar-expand-md.navbar-light.bg-white.fixed-top
+        a.navbar-brand(href="#")
+          Navbar Brand
+        .collapse.navbar-collapse#navbarCollapsableContent
+          ul.navbar-nav.mr-auto
+            li.nav-item.active
+              a.nav-link(href="#")
+                Menu One
+            li.nav-item
+              a.nav-link(href="#")
+                Menu Two
+            li.nav-item
+              a.nav-link(href="#")
+                Menu Three
+      // How do we handle navbar obscuring jumbotron.  Use mt-5 for now
+    main 
+      .jumbotron.hero.mt-5
+        .container
+          h1#event-title.display-4 Hero Heading
+          p#event-lead.lead.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+          .container.mt-2
+            a(class="btn btn-outline-primary m-1" href="#" role="button") Call to Action
+
+      .container
+        p.
+          Ipsum aliquid doloribus ullam amet laboriosam minima eaque optio, non
+          veniam. Debitis optio iusto molestias doloribus sed Maiores soluta
+          soluta sint in nisi non alias? Ab autem vel in eaque?
+    script
+      // Custom javascript here
