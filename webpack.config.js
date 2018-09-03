@@ -3,10 +3,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const autoprefixer = require("autoprefixer"); 
+const webpack = require("webpack");
 
 const pug_rule = {
   test: /\.pug$/,
-  use: ['html-loader?attrs=false', 'pug-html-loader']
+  use: ['html-loader', 'pug-html-loader']
 };
 
 const styleRule = function(isDev) {
@@ -30,6 +31,18 @@ const styleRule = function(isDev) {
       'sass-loader'
     ]
   };
+};
+
+const imageRule = {
+  test: /.(jpg|jpeg|png|gif)$/,
+  use: [{
+    loader: 'url-loader',
+    options: {
+      limit: 8192,
+      name: '[name].[hash].[ext]',
+      outputPath: 'images'
+    }
+  }]
 };
 
 const fontRule = {
@@ -57,10 +70,19 @@ module.exports = (env, argv) => {
       rules: [
         pug_rule,
         styleRule(isDev),
-        fontRule
+        fontRule,
+        imageRule,
+        { // use imports-loader to load utility scripts
+          test: /\.\/src\/scripts\/.+\.js/,
+          use: "imports-loader?$=jquery"
+        }
       ]
     },
     plugins: [
+      new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery: 'jquery'
+      }),
       new HtmlWebpackPlugin({
         title: 'Refactor Title to be Configurable',
         filename: 'index.html',
